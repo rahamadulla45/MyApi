@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from polls.views import PersonListView,PersonDetailView,PersonUpdateView,PersonDeleteView,PersonCreateView
+from polls.views import PersonListView,PersonDetailView,PersonUpdateView,PersonDeleteView,PersonCreateView,Registration
+from rest_framework_jwt.views import obtain_jwt_token
 
 
 urlpatterns = [
@@ -27,6 +28,8 @@ urlpatterns = [
     path('api/<int:person_id>/update/', PersonUpdateView.as_view(), name='api-update'),
     path('api/<int:person_id>/delete/', PersonDeleteView.as_view(), name='api-delete'),
     path('api/create/', PersonCreateView.as_view(), name='api-create'),
+    path('register/',Registration.as_view(),name='register'),
+    path('login/',obtain_jwt_token,name="login"),
 
 
 
